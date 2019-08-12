@@ -16,22 +16,25 @@
         <a href="index.php" class="brand"><img src="img/klothee-2.png"></a>  
         <div class="menu">
             <ul class="submenu">
-                <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="product.php">Product</a></li>
-                <li><a href="about.php">About</a></li>
+                @guest
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @endguest
                 @auth
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-
+                        <a class="dropdown-item" href="">
+                            {{ 'Setting' }}
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
