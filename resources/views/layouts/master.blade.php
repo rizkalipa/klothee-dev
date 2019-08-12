@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title')</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="icon" href="img/1559034957.ico">
+    <script src="{{ asset('js/app.js') }}"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="index.php" class="brand"><img src="img/klothee-2.png"></a>  
+        <div class="menu">
+            <ul class="submenu">
+                <li><a class="active" href="index.php">Home</a></li>
+                <li><a href="product.php">Product</a></li>
+                <li><a href="about.php">About</a></li>
+                @auth
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li> 
+                @endauth
+            </ul>
+            <button class="nav-bar"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>  
+    
+    <!-- Header Slide Mobile -->
+    <div class="mobile-header">
+        <div class="wrapper">
+            <a class="text-center" href="index.php"><img class="img-fluid w-50" src="img/klothee-1-white.png"></a>
+            <ul class="responsive-menu mt-5">
+                <a href="index.php"><li><i class="fas fa-home pr-3"></i>Home</li></a>
+                <a href="product.php"><li><i class="fa fa-tshirt pr-3"></i>Product</li></a>
+                <a href="about.php"><li><i class="fas fa-user-friends pr-3"></i>About</li></a>
+            </ul>
+        </div>
+    </div>
+
+    @yield('content')
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="img/klothee-1-white.png">
+        <p>Copyright &copy; 2019 <a href="index.php" class="highlight">Klothee Inc.</a></p>
+    </div>
+</body>
+</html>
