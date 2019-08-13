@@ -17,10 +17,14 @@
         <div class="menu">
             <ul class="submenu">
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
                 @endguest
+
                 @auth
+                    @if (auth()->user()->role === 'Admin' || auth()->user()->role === 'Author')
+                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    @endif
                 <li class="nav-item dropdown d-flex justify-content-center">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
