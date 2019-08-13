@@ -18,6 +18,8 @@ const mix = require('laravel-mix');
     // mix.scripts(['resources/js/main.js',
     //         'resources/js/bootstrap.js'], 'public/js/main.js');
 
-    mix.styles(['resources/css/style.css',
-            'resources/css/all.min.css'], 'public/css/style.css')
+        mix.styles(['resources/css/style.css',
+            'resources/css/all.min.css'], 'public/css/style.css');
+
+        mix.styles('resources/css/dashboard.css', 'public/css/dashboard.css')
     // .copyDirectory('resources/img', 'public/img');

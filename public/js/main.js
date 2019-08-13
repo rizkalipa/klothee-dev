@@ -36,6 +36,7 @@ $('.responsive-menu a').mouseout(function()
         'transition': '0.3s ease-in-out',
         'color': 'white'});
 })
+
 window._ = require('lodash');
 
 /**
