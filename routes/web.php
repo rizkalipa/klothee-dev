@@ -20,9 +20,9 @@ Auth::routes(['reset' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Dashboard Access
-Route::get('/', function()
+Route::get('/dashboard', function()
 {
-    return view('dashboard/index');
+    return view('dashboard');
 })->name('dashboard');
 
 
