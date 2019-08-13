@@ -21,7 +21,8 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #3490dc;
+  /* --primary: #3490dc; */
+  --primary: rgb(140, 20, 252);
   --secondary: #6c757d;
   --success: #38c172;
   --info: #6cb2eb;
@@ -2562,14 +2563,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  color: var(--primary);
+  background-color: transparent;
+  border-color: var(--primary);
 }
 
 .btn-primary:focus,
@@ -5147,7 +5148,7 @@ a.badge:focus {
 
 .badge-primary {
   color: #fff;
-  background-color: #3490dc;
+  background-color: var(--primary);
 }
 
 a.badge-primary:hover,
@@ -6718,7 +6719,8 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #3490dc !important;
+  background-color: var(--primary) !important;
+  color: white !important;
 }
 
 a.bg-primary:hover,
@@ -6854,7 +6856,7 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-  border-color: #3490dc !important;
+  border-color: var(--primary) !important;
 }
 
 .border-secondary {

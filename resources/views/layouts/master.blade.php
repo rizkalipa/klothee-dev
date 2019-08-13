@@ -21,7 +21,7 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @endguest
                 @auth
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown d-flex justify-content-center">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
@@ -48,7 +48,7 @@
     
     <!-- Header Slide Mobile -->
     <div class="mobile-header">
-        <div class="wrapper">
+        <div class="mobile-header-wrapper">
             <a class="text-center" href="index.php"><img class="img-fluid w-50" src="img/klothee-1-white.png"></a>
             <ul class="responsive-menu mt-5">
                 <a href="index.php"><li><i class="fas fa-home pr-3"></i>Home</li></a>
@@ -57,7 +57,7 @@
             </ul>
         </div>
     </div>
-
+    
     @yield('content')
 
     <!-- Footer -->

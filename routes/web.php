@@ -11,10 +11,12 @@
 |
 */
 
+// Guest and Unauthenticated User
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
-Auth::routes();
-
+Auth::routes(['reset' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
+
+
