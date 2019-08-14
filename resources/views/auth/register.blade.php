@@ -41,11 +41,6 @@
                                 <small class="text-danger">{{ $errors->first('password_confirmation') }}</small><br><br>
                             @endif
         
-                            <div class="form-check">
-                                <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                                <label for="remember" class="form-check-label">Remember Me</label>
-                            </div><br>
-        
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg px-5">Login</button>
                             </div>
