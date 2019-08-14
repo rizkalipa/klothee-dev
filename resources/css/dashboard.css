@@ -28,10 +28,13 @@ body {
 
 .header {
     background-color:transparent;
-    padding: 18px;
     color: #333333;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column
+}
+
+.sub-header {
+    padding: 13px;
 }
 
 .header .brand img {
@@ -43,6 +46,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     font-weight: 500;
+    padding: 13px;
 }
 
 .menu .nav-bar {
@@ -129,6 +133,7 @@ body {
 
 .main-wrapper {
     width: 100%;
+    background-color: #f8fafc;
 }
 
 @media screen and (max-width: 1000px)

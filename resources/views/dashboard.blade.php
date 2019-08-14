@@ -4,9 +4,8 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-lg">
-            <h3>Admin Dashboard</h3>
             <div class="jumbotron">
                 <h1 class="display-4">Hello, world!</h1>
                 <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>

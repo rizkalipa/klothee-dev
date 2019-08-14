@@ -29,6 +29,7 @@
                 <div class="menu">
                     <ul class="submenu">
                         @auth
+                        <li><span class="highlight h5"><i class="fas fa-bell"></i></span></li>
                             @if (auth()->user()->role === 'Author')
                                 <li><a href="">Management</a></li>
                             @endif
@@ -54,7 +55,11 @@
                         @endauth
                     </ul>
                 </div>
-            </div>  
+                <div class="sub-header shadow bg-primary">  
+                    <h5 class="m-0">Admin Dashboard</h5>
+                </div>  
+            </div>
+              
 
         @yield('content')
         </div>

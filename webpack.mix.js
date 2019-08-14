@@ -21,5 +21,6 @@ const mix = require('laravel-mix');
         mix.styles(['resources/css/style.css',
             'resources/css/all.min.css'], 'public/css/style.css');
 
-        mix.styles('resources/css/dashboard.css', 'public/css/dashboard.css')
+        mix.styles(['resources/css/dashboard.css',
+            'resources/css/all.min.css'], 'public/css/dashboard.css')
     // .copyDirectory('resources/img', 'public/img');
