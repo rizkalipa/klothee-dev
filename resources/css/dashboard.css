@@ -73,6 +73,7 @@ body {
     padding: 10px;
     border: 1px solid transparent;
     font-size: 1rem;
+    flex-wrap: nowrap;
 }
 
 .header ul li .active {
@@ -122,13 +123,21 @@ body {
 
 .sidebar {
     width: 20%;
-    padding: 20px;
     min-height: 100vh;
 }
 
 .sidebar-menu {
     display: flex;
     flex-direction: column;
+}
+
+.sidebar-menu a {
+    padding: 10px 0;
+}
+
+.sidebar-menu a:hover {
+    background-color: white;
+    color: #333;
 }
 
 .main-wrapper {

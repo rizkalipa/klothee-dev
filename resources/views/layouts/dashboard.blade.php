@@ -15,7 +15,10 @@
     {{-- Dashboard With Sidebar --}}
     <div class="wrapper d-flex">
         {{-- Sidebar Menu --}}
-        <aside class="sidebar bg-dark ">
+        <aside class="sidebar bg-dark">
+            <div class="sidebar-brand text-center pt-4">
+                <img src="{{ asset('img/klothee-1-white.png') }}" class="img-fluid w-75 p-1">
+            </div>
             <div class="sidebar-menu">
                 <a href="">Test Menu</a>
                 <a href="">Test Menu</a>
