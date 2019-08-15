@@ -127,9 +127,8 @@ body {
     color: #333;
 }
 
-.sidebar-profile a {
-    color: #333;
-}
+.sidebar-profile a { color: #333; }
+.sidebar-profile a:hover { color: #FFF; }
 
 .main-wrapper {
     width: 100%;

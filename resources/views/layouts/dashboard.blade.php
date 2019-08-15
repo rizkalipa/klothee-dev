@@ -81,5 +81,17 @@
         <img src="img/klothee-1-white.png">
         <p>Copyright &copy; 2019 <a href="index.php" class="highlight">Klothee Inc.</a></p>
     </div> --}}
+
+    <script type="text/javascript">
+        $('.sidebar-profile a').mouseover(function()
+        {
+            $('.sidebar-profile .card').css('background-color', 'rgb(140, 20, 252)')
+            .find('img').css({'transform' : "scale(1.2)", 'transition' : "ease-in 0.2s"})
+        }).mouseleave(function()
+        {
+            $('.sidebar-profile .card').css('background-color', 'white')
+            .find('img').css({'transform' : "scale(1)", 'transition' : "ease-in 0.2s"})
+        })
+    </script>
 </body>
 </html>
