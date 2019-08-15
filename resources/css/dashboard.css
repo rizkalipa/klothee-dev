@@ -2,9 +2,14 @@
  * My Own Style CSS !!
  * 
  */
- *, ul, p {
+ *, ul, p, h5 {
     padding: 0;
     margin: 0;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 @font-face {
@@ -96,31 +101,6 @@ body {
     font-weight: 600;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    justify-items: center;
-    background-color: rgb(44, 44, 44);
-    color: white;
-    font-size: 1rem;
-    padding: 10px 30px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer > p { margin: 0; }
-
-.footer img {
-    width: 100px;
-}
-
-.footer a:hover {
-    text-decoration: none;
-    color: white;
-}
-
 .sidebar {
     width: 25%;
     min-height: 100vh;
@@ -144,7 +124,10 @@ body {
 
 .sidebar-menu a:hover {
     background-color: white;
-    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-profile a {
     color: #333;
 }
 

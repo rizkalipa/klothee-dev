@@ -19,7 +19,16 @@
             <div class="sidebar-brand text-center pt-4">
                 <img src="{{ asset('img/klothee-1-white.png') }}" class="img-fluid w-75 p-1">
             </div>
-            <div class="sidebar-menu mt-5">
+            <div class="sidebar-profile p-2 mt-4">
+                <div class="card p-2">
+                    <div class="card-body d-flex align-items-center p-0">
+                        <img src="{{ asset("img/user-3.2.jpg") }}" class="img-fluid rounded-circle w-25 mr-4">
+                        <h5><a href="">Your Profile</a></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-menu mt-4">
+                <a href=""><i class="fas fa-bullhorn f5"></i>Post Content</a>
                 <a href=""><i class="fas fa-clipboard-check h5"></i>Meet Scheduler</a>
                 <a href=""><i class="far fa-calendar-alt h5"></i><p>Events</p></a>
                 <a href=""><i class="fas fa-envelope h5"></i><p>Community Mail</p></a>
