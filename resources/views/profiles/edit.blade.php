@@ -3,43 +3,71 @@
 @section('title', 'User Profile')
 
 @section('content')
-<div class="container">
+<div class="container mt-5 p-3">
     <div class="row">
-        <div class="col-md-7">
-            <label for="name">Name</label>
-            <input type="name" class="form-control @error('name') is-invalid @enderror" 
-                name="name" value="{{ old('name') }}"><br>
-            @if($errors->has('name'))
-                <small class="text-danger">{{ $errors->first('name') }}</small><br><br>
-            @endif
+        <div class="col-md-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                    <h4 class="m-0"><span class="highlight"><i class="fas fa-user-edit mr-3"></i></span> Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form action="">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" 
+                                    name="first_name" value="{{ old('first_name') }}"><br>
+                                @if($errors->has('first_name'))
+                                    <small class="text-danger">{{ $errors->first('first_name') }}</small><br><br>
+                                @endif
+                            </div>
 
-            <label for="email">Email</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                name="email" value="{{ old('email') }}"><br>
-            @if($errors->has('email'))
-                <small class="text-danger">{{ $errors->first('email') }}</small><br><br>
-            @endif
-            
-            <label for="password">Password</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" 
-                name="password"><br>
-            @if($errors->has('password'))
-                <small class="text-danger">{{ $errors->first('password') }}</small><br><br>
-            @endif
+                            <div class="col">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control @error('last_name') is-invalid @enderror" 
+                                    name="last_name" value="{{ old('last_name') }}"><br>
+                                @if($errors->has('last_name'))
+                                    <small class="text-danger">{{ $errors->first('last_name') }}</small><br><br>
+                                @endif
+                            </div>
+                        </div>
 
-            <label for="password-confirm">Confirm Password</label>
-            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" 
-                name="password_confirmation"><br>
-            @if($errors->has('password_confirmation'))
-                <small class="text-danger">{{ $errors->first('password_confirmation') }}</small><br><br>
-            @endif
-            
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg px-5">Login</button>
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" 
+                            name="address" value="{{ old('address') }}"><br>
+                        @if($errors->has('address'))
+                            <small class="text-danger">{{ $errors->first('address') }}</small><br><br>
+                        @endif
+
+                        <label for="bio">Bio</label>
+                        <textarea name="bio" id="bio" cols="15" rows="3" class="form-control"></textarea><br>
+                        @if($errors->has('bio'))
+                            <small class="text-danger">{{ $errors->first('bio') }}</small><br><br>
+                        @endif
+
+                        <label for="avatar">Avatar</label>
+                        <input type="file" name="avatar" class="form-control-file"><br>
+                        @if($errors->has('bio'))
+                            <small class="text-danger">{{ $errors->first('bio') }}</small><br><br>
+                        @endif
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">Login</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="col-md-5">
-            
+        <div class="col-md-7">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                    <h4 class="m-0"><span class="highlight"><i class="fas fa-user mr-3"></i></span> Current Profile</h4>
+                </div>
+                <div class="card-body text-center">
+                    <img src="{{ asset("img/user-3.2.jpg") }}" class="img-fluid rounded-circle w-50">
+                    <h5 class="mt-5">{{ auth()->user()->name }}</h5>
+                </div>
+            </div>
         </div>
     </div>
 </div>

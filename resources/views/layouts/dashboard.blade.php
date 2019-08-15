@@ -80,6 +80,9 @@
               
 
         @yield('content')
+        <div class="footer text-center p-4 mt-5 border-top">
+            <h5>&copy; 2019 <span class="highlight">Klothee, inc</span></h5>
+        </div>
         </div>
     </div>
 

@@ -14,7 +14,7 @@
                             <h3 class="card-title">Register <span class="highlight"><i class="far fa-grin-beam"></i></span></h3><hr>
                             
                             <label for="name">Name</label>
-                            <input type="name" class="form-control @error('name') is-invalid @enderror" 
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" 
                                 name="name" value="{{ old('name') }}"><br>
                             @if($errors->has('name'))
                                 <small class="text-danger">{{ $errors->first('name') }}</small><br><br>
