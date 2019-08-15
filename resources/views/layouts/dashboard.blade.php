@@ -19,11 +19,11 @@
             <div class="sidebar-brand text-center pt-4">
                 <img src="{{ asset('img/klothee-1-white.png') }}" class="img-fluid w-75 p-1">
             </div>
-            <div class="sidebar-menu">
-                <a href="">Test Menu</a>
-                <a href="">Test Menu</a>
-                <a href="">Test Menu</a>
-                <a href="">Test Menu</a>
+            <div class="sidebar-menu mt-5">
+                <a href=""><i class="fas fa-clipboard-check h5"></i>Meet Scheduler</a>
+                <a href=""><i class="far fa-calendar-alt h5"></i><p>Events</p></a>
+                <a href=""><i class="fas fa-envelope h5"></i><p>Community Mail</p></a>
+                <a href=""><i class="fas fa-user-friends h5"></i><p>Member Manager</p></a>
             </div>
         </aside>
         <div class="main-wrapper">
