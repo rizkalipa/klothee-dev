@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <title>Admin Dashboard</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-    <link rel="icon" href="img/1559034957.ico">
+    <link rel="icon" href="{{ asset('img/1559034957.ico') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </head>
@@ -28,7 +28,7 @@
                         @else
                             <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
                         @endif
-                        <h5><a href="">Your Profile</a></h5>
+                        <h5><a href="{{ route('user.edit', ['id' => auth()->user()->id]) }}">Your Profile</a></h5>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     </ul>
                 </div>
                 <div class="sub-header shadow bg-primary">  
-                    <h5 class="m-0">Admin Dashboard</h5>
+                    <h5 class="m-0">@yield('title')</h5>
                     <h5><em>{{ date('l, d/F/Y') }}</em></h5>
                 </div>  
             </div>
@@ -92,11 +92,11 @@
         $('.sidebar-profile a').mouseover(function()
         {
             $('.sidebar-profile .card').css({'background-color' : 'rgb(140, 20, 252)', "box-shadow" : "0px 0px 25px rgba(140, 20, 252, 0.3)"})
-            .find('img').css({'transform' : "scale(1.2)", 'transition' : "ease-in 0.2s"})
+            .find('img').css({'transform' : "scale(1.2)", 'transition' : "ease-in 0.1s"})
         }).mouseleave(function()
         {
             $('.sidebar-profile .card').css({'background-color' : 'white', "box-shadow" : "none"})
-            .find('img').css({'transform' : "scale(1)", 'transition' : "ease-in 0.2s"})
+            .find('img').css({'transform' : "scale(1)", 'transition' : "ease-in 0.1s"})
         })
     </script>
 </body>

@@ -25,4 +25,6 @@ Route::get('/dashboard', function()
     return view('dashboard');
 })->middleware('can:access-dashboard')->name('dashboard');
 
+Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
+
 
