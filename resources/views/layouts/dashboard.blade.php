@@ -33,9 +33,6 @@
                     <ul class="submenu">
                         @auth
                         <li><span class="highlight h5"><i class="fas fa-bell"></i></span></li>
-                            @if (auth()->user()->role === 'Author')
-                                <li><a href="">Management</a></li>
-                            @endif
                         <li class="dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -50,6 +47,9 @@
                                 <a class="dropdown-item" href="">
                                     {{ 'Setting' }}
                                 </a>
+                                @if (auth()->user()->role === 'Author')
+                                    <a href="" class="dropdown-item">Management</a>
+                                 @endif
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
