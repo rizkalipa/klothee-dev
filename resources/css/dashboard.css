@@ -40,6 +40,8 @@ body {
 
 .sub-header {
     padding: 13px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header .brand img {

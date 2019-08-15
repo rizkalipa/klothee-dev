@@ -22,8 +22,13 @@
             <div class="sidebar-profile p-2 mt-4">
                 <div class="card p-2">
                     <div class="card-body d-flex align-items-center p-0">
-                        <img src="{{ asset("img/user-3.2.jpg") }}" class="img-fluid rounded-circle w-25 mr-4">
-                        <h5><a href="">Your Profile</a></h5>
+                        @if (auth()->user()->avatar != null)
+                            <img src="{{ asset("img/user-3.2.jpg") }}" class="img-fluid rounded-circle w-25 mr-4">
+                            <h5><a href="">Your Profile</a></h5>
+                        @else
+                            <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
+                            <h5><a href="">Your Profile</a></h5>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -69,6 +74,7 @@
                 </div>
                 <div class="sub-header shadow bg-primary">  
                     <h5 class="m-0">Admin Dashboard</h5>
+                    <h5><em>{{ date('l, d/F/Y') }}</em></h5>
                 </div>  
             </div>
               
