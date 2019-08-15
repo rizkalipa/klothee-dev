@@ -103,6 +103,13 @@ body {
     font-weight: 600;
 }
 
+.divider-10 {
+    border: 3px solid rgb(140, 20, 252);
+    border-radius: 10px;
+    width: 45%; 
+    margin: 0 auto;
+}
+
 .sidebar {
     width: 25%;
     min-height: 100vh;
@@ -129,6 +136,17 @@ body {
     color: #333;
 }
 
+.sidebar-brand  { 
+    text-align: center;
+    margin: 30px 0;
+}
+
+.sidebar-brand img { 
+    width: 85%;
+    padding: 0px 30px;
+}
+
+.sidebar-profile { margin-top: 30px; padding: 0 1rem; }
 .sidebar-profile a { color: #333; }
 .sidebar-profile a:hover { color: #FFF; }
 

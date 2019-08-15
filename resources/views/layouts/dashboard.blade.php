@@ -16,19 +16,19 @@
     <div class="wrapper d-flex">
         {{-- Sidebar Menu --}}
         <aside class="sidebar bg-dark">
-            <div class="sidebar-brand text-center pt-4">
-                <img src="{{ asset('img/klothee-1-white.png') }}" class="img-fluid w-75 p-1">
+            <div class="sidebar-brand">
+                <img src="{{ asset('img/klothee-1-white.png') }}" class="img-fluid">
             </div>
-            <div class="sidebar-profile p-2 mt-4">
+            <hr class="divider-10">
+            <div class="sidebar-profile">
                 <div class="card p-2">
                     <div class="card-body d-flex align-items-center p-0">
                         @if (auth()->user()->avatar != null)
                             <img src="{{ asset("img/user-3.2.jpg") }}" class="img-fluid rounded-circle w-25 mr-4">
-                            <h5><a href="">Your Profile</a></h5>
                         @else
                             <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
-                            <h5><a href="">Your Profile</a></h5>
                         @endif
+                        <h5><a href="">Your Profile</a></h5>
                     </div>
                 </div>
             </div>
@@ -53,17 +53,17 @@
                             </a>
         
                             <div class="dropdown-menu dropdown-menu-right border-0 shadow text-center" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <a class="dropdown-item" href="">
-                                    {{ 'Setting' }}
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                    {{ 'Go to Menu' }}
                                 </a>
                                 @if (auth()->user()->role === 'Author')
                                     <a href="" class="dropdown-item">Management</a>
                                  @endif
+                                 <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
@@ -91,11 +91,11 @@
     <script type="text/javascript">
         $('.sidebar-profile a').mouseover(function()
         {
-            $('.sidebar-profile .card').css('background-color', 'rgb(140, 20, 252)')
+            $('.sidebar-profile .card').css({'background-color' : 'rgb(140, 20, 252)', "box-shadow" : "0px 0px 25px rgba(140, 20, 252, 0.3)"})
             .find('img').css({'transform' : "scale(1.2)", 'transition' : "ease-in 0.2s"})
         }).mouseleave(function()
         {
-            $('.sidebar-profile .card').css('background-color', 'white')
+            $('.sidebar-profile .card').css({'background-color' : 'white', "box-shadow" : "none"})
             .find('img').css({'transform' : "scale(1)", 'transition' : "ease-in 0.2s"})
         })
     </script>
