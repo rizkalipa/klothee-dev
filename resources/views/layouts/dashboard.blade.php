@@ -23,12 +23,12 @@
             <div class="sidebar-profile">
                 <div class="card p-2">
                     <div class="card-body d-flex align-items-center p-0">
-                        @if (auth()->user()->avatar != null)
-                            <img src="{{ asset("img/user-3.2.jpg") }}" class="img-fluid rounded-circle w-25 mr-4">
+                        @if (isset(auth()->user()->profile->avatar))
+                            <img src="{{ asset("storage/" . auth()->user()->profile->avatar) }}" class="img-fluid rounded-circle w-25 mr-4">
                         @else
                             <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
                         @endif
-                        <h5><a href="{{ route('profile.edit', ['id' => auth()->user()->id]) }}">Your Profile</a></h5>
+                        <h5><a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}">Your Profile</a></h5>
                     </div>
                 </div>
             </div>
@@ -77,9 +77,9 @@
                     <h5><em>{{ date('l, d/F/Y') }}</em></h5>
                 </div>  
             </div>
-              
 
         @yield('content')
+
         <div class="footer text-center p-4 mt-5 border-top">
             <h5>&copy; 2019 <span class="highlight">Klothee, inc</span></h5>
         </div>

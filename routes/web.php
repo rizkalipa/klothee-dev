@@ -25,7 +25,10 @@ Route::get('/dashboard', function()
     return view('dashboard');
 })->middleware('can:access-dashboard')->name('dashboard');
 
-Route::get('/user/{id}/edit', 'UserController@editProfile')->name('profile.edit');
-Route::post('/user/{id}/update', 'UserController@updateProfile')->name('profile.update');
+// Handling Profile
+Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
+Route::post('/profile/{profile}', 'ProfileController@update')->name('profile.update');
+Route::get('/profile', 'ProfileController@create')->name('profile.create');
+Route::post('/profile/{id}/store', 'ProfileController@store')->name('profile.store');
 
 

@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        \App\Profile::class => \App\Policies\ProfilePolicy::class
     ];
 
     /**
@@ -28,6 +29,16 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('access-dashboard', function($user)
         {
             return $user->role === 'Admin' || $user->role === 'Author';
+        });
+
+        Gate::define('show-profile', function($user, $profile)
+        {
+            return $user->id === $profile->user_id;
+        });
+
+        Gate::define('update-profile', function($user, $profile)
+        {
+            return $user->id === $profile->user_id;
         });
     }
 }
