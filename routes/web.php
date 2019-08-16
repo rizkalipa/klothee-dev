@@ -25,6 +25,7 @@ Route::get('/dashboard', function()
     return view('dashboard');
 })->middleware('can:access-dashboard')->name('dashboard');
 
-Route::get('/user/{id}/edit', 'UserController@edit')->name('user.edit');
+Route::get('/user/{id}/edit', 'UserController@editProfile')->name('profile.edit');
+Route::post('/user/{id}/update', 'UserController@updateProfile')->name('profile.update');
 
 

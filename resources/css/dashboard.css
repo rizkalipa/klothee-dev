@@ -54,6 +54,7 @@ body {
     align-items: center;
     font-weight: 500;
     padding: 13px;
+    background-color: white;
 }
 
 .menu .nav-bar {
@@ -96,6 +97,11 @@ body {
     color: white;
     box-shadow: 0px 0px 25px rgba(140, 20, 252, 0.3);
     transition: ease-in 0.2s;
+}
+
+.main-wrapper {
+    width: 100%;
+    background-color: #f8f1ff;
 }
 
 .highlight {
@@ -149,11 +155,6 @@ body {
 .sidebar-profile { margin-top: 30px; padding: 0 1rem; }
 .sidebar-profile a { color: #333; }
 .sidebar-profile a:hover { color: #FFF; }
-
-.main-wrapper {
-    width: 100%;
-    background-color: #f8fafc;
-}
 
 @media screen and (max-width: 1000px)
 {
