@@ -20,15 +20,18 @@ Auth::routes(['reset' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Dashboard Access
-Route::get('/dashboard', function()
+Route::middleware('can:access-dashboard')->group(function()
 {
-    return view('dashboard');
-})->middleware('can:access-dashboard')->name('dashboard');
+    Route::get('/dashboard', function()
+    {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/profile', 'ProfileController@create')->name('profile.create');
+});
 
 // Handling Profile
 Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
 Route::post('/profile/{profile}', 'ProfileController@update')->name('profile.update');
-Route::get('/profile', 'ProfileController@create')->name('profile.create');
-Route::post('/profile/{id}/store', 'ProfileController@store')->name('profile.store');
+Route::post('/profile', 'ProfileController@store')->name('profile.store');
 
 

@@ -81,6 +81,6 @@ class ProfileController extends Controller
         $profile->user_id = $id;
         $newProfile = $profile->save();
 
-        return back()->with('status', 'Successfully Create Profile!');
+        return redirect()->route('profile.show')->with('status', 'Successfully Create Profile!');
     }
 }
