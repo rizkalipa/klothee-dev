@@ -28,7 +28,7 @@
                         @else
                             <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
                         @endif
-                        <a href=""><h5>Your Profile</h5></a>
+                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}"><h5>Your Profile</h5></a>
                     </button>
                 </div>
             </div>
