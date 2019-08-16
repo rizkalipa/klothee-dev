@@ -36,8 +36,9 @@ class ProfileController extends Controller
 
         $request->validate([
             'first_name' => 'required|max:25',
-            'last_name' => 'required|max:25',
-            'bio' => 'max:50',
+            'last_name' => 'max:25',
+            'address' => 'max:75',
+            'bio' => 'max:75',
         ]);
 
         $profile->first_name = $request->input('first_name');
@@ -62,9 +63,9 @@ class ProfileController extends Controller
 
         $request->validate([
             'first_name' => 'required|max:25',
-            'last_name' => 'required|max:25',
-            'avatar' => 'required',
-            'bio' => 'max:50',
+            'last_name' => 'max:25',
+            'address' => 'max:75',
+            'bio' => 'max:75'
         ]);
 
         $profile->first_name = $request->input('first_name');

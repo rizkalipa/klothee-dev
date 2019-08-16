@@ -154,7 +154,8 @@ body {
 
 .sidebar-profile { margin-top: 30px; padding: 0 1rem; }
 .sidebar-profile a { color: #333; }
-.sidebar-profile a:hover { color: #FFF; }
+
+.profile-button .btn { background-color: white; }
 
 @media screen and (max-width: 1000px)
 {

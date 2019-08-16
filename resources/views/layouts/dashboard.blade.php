@@ -21,19 +21,20 @@
             </div>
             <hr class="divider-10">
             <div class="sidebar-profile">
-                <div class="card p-2">
-                    <div class="card-body d-flex align-items-center p-0">
+                <div class="profile-button mt-3">
+                    <button type="submit" class="btn d-flex align-items-center p-2">
                         @if (isset(auth()->user()->profile->avatar))
                             <img src="{{ asset("storage/" . auth()->user()->profile->avatar) }}" class="img-fluid rounded-circle w-25 mr-4">
                         @else
                             <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
                         @endif
-                        <h5><a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}">Your Profile</a></h5>
-                    </div>
+                        <a href=""><h5>Your Profile</h5></a>
+                    </button>
                 </div>
             </div>
             <div class="sidebar-menu mt-4">
-                <a href=""><i class="fas fa-bullhorn f5"></i>Post Content</a>
+                <a href="{{ route('dashboard') }}"><i class="fas fa-chart-line h5"></i>Dashboard</a>
+                <a href=""><i class="fas fa-bullhorn h5"></i>Post Content</a>
                 <a href=""><i class="fas fa-clipboard-check h5"></i>Meet Scheduler</a>
                 <a href=""><i class="far fa-calendar-alt h5"></i><p>Events</p></a>
                 <a href=""><i class="fas fa-envelope h5"></i><p>Community Mail</p></a>
@@ -92,14 +93,16 @@
     </div> --}}
 
     <script type="text/javascript">
-        $('.sidebar-profile a').mouseover(function()
+        $('.sidebar-profile').mouseover(function()
         {
-            $('.sidebar-profile .card').css({'background-color' : 'rgb(140, 20, 252)', "box-shadow" : "0px 0px 25px rgba(140, 20, 252, 0.3)"})
+            $('.profile-button .btn').css({'background-color' : 'rgb(140, 20, 252)', "box-shadow" : "0px 0px 25px rgba(140, 20, 252, 0.3)"})
             .find('img').css({'transform' : "scale(1.2)", 'transition' : "ease-in 0.1s"})
+            $('a h5').css('color', 'white')
         }).mouseleave(function()
         {
-            $('.sidebar-profile .card').css({'background-color' : 'white', "box-shadow" : "none"})
+            $('.profile-button .btn').css({'background-color' : 'white', "box-shadow" : "none"})
             .find('img').css({'transform' : "scale(1)", 'transition' : "ease-in 0.1s"})
+            $('a h5').css('color', '#333')
         })
     </script>
 </body>
