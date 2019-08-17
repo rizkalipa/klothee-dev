@@ -9,6 +9,12 @@ class ProfileController extends Controller
 {
     public function create()
     {
+        // This id is user id
+        if (auth()->user()->profile)
+        {
+            return redirect()->route('profile.show', ['id' => auth()->user()->id]);
+        }
+
         return view('profiles.create');
     }
 
@@ -82,6 +88,6 @@ class ProfileController extends Controller
         $profile->user_id = $id;
         $newProfile = $profile->save();
 
-        return redirect()->route('profile.show')->with('status', 'Successfully Create Profile!');
+        return redirect()->route('profile.show', ['id' => $id])->with('status', 'Successfully Create Profile!');
     }
 }

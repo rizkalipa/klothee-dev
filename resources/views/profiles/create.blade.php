@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <form action="{{ route('profile.store', ['id' => auth()->user()->id]) }}" 
-                            enctype="multipart/form-data" method="POST">
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
                             <div class="col">

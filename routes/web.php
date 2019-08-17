@@ -26,12 +26,12 @@ Route::middleware('can:access-dashboard')->group(function()
     {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/profile', 'ProfileController@create')->name('profile.create');
+    Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
 });
 
 // Handling Profile
-Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
-Route::post('/profile/{profile}', 'ProfileController@update')->name('profile.update');
-Route::post('/profile', 'ProfileController@store')->name('profile.store');
+Route::get('/profile/{profile}/show', 'ProfileController@show')->name('profile.show');
+Route::post('/profile/{profile}/update', 'ProfileController@update')->name('profile.update');
+Route::post('/profile/{profile}/store', 'ProfileController@store')->name('profile.store');
 
 
