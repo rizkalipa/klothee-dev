@@ -81,7 +81,11 @@
                 </div>
                 <div class="card-body text-center">
                     @if ($user->profile)
-                        <img src="{{ asset('/storage/' . $user->profile->avatar) }}" class="img-fluid rounded-circle w-50 shadow">
+                        @if ($user->profile->avatar)
+                            <img src="{{ asset('/storage/' . $user->profile->avatar) }}" class="img-fluid rounded-circle w-50 shadow">
+                        @else
+                            <img src="{{ asset('img/klothee-favicon.png') }}" class="img-fluid rounded-circle w-50 shadow">
+                        @endif
                         <h4 class="mt-4"><strong>{{ $user->profile->first_name . ' ' }}</strong><span class="highlight">{{ $user->profile->last_name }}</span></h4>
                         <h5 class="text-muted">{{ $user->role }}</h5>
                         <blockquote class="blockquote text-center mt-4">

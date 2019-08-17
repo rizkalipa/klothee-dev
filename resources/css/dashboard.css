@@ -84,12 +84,6 @@ body {
     flex-wrap: nowrap;
 }
 
-.header ul li .active {
-    border-radius: 5px;
-    border: 1px solid rgb(140, 20, 252);
-    color: rgb(140, 20, 252);
-}
-
 .header ul li a:hover {
     border-radius: 5px;
     background-color: rgb(140, 20, 252);
@@ -107,6 +101,15 @@ body {
 .highlight {
     color: rgb(140, 20, 252);
     font-weight: 600;
+}
+
+.active {
+    background-color: rgb(140, 20, 252);
+}
+
+active:hover {
+    background-color: white;
+    color: #333;
 }
 
 .divider-10 {

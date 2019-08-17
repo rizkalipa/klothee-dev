@@ -29,7 +29,10 @@ class ProfileController extends Controller
 
         $profile = $user->profile;
 
-        $this->authorize('show-profile', $profile);
+        if (! Gate::allows('show-profile', $profile))
+        {
+            return redirect()->route('profile.show', ['id' => auth()->user()->id]);
+        }
 
         return view('profiles.show', ['user' => $user]);
     }

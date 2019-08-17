@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof MethodNotAllowedHttpException)
         {
-            abort(401, 'Invalid Post URL');
+            abort(403, 'Invalid Post URL');
         }
 
         return parent::render($request, $exception);
