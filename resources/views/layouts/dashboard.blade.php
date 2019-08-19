@@ -22,19 +22,21 @@
             <hr class="divider-10">
             <div class="sidebar-profile">
                 <div class="profile-button mt-3">
-                    <button type="submit" class="btn d-flex align-items-center p-2">
-                        @if (isset(auth()->user()->profile->avatar))
-                            <img src="{{ asset("storage/" . auth()->user()->profile->avatar) }}" class="img-fluid rounded-circle w-25 mr-4">
-                        @else
-                            <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
-                        @endif
-                        <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}"><h5>Your Profile</h5></a>
-                    </button>
+                    <a href="{{ route('profile.show', ['id' => auth()->user()->id]) }}">
+                        <button type="submit" class="btn d-flex align-items-center p-2">
+                            @if (isset(auth()->user()->profile->avatar))
+                                <img src="{{ asset("storage/" . auth()->user()->profile->avatar) }}" class="img-fluid rounded-circle w-25 mr-4">
+                            @else
+                                <img src="{{ asset("img/klothee-favicon.png") }}" class="img-fluid w-25 mr-4">
+                            @endif
+                            <h5>Your Profile</h5>
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="sidebar-menu mt-4">
-                <a href="{{ route('dashboard') }}"><i class="fas fa-chart-line h5"></i>Dashboard</a>
-                <a href=""><i class="fas fa-bullhorn h5"></i>Post Content</a>
+                <a class="{{ Request::segment(1) == 'dashboard' ? 'active' : '' }}" href="{{ route('dashboard') }}"><i class="fas fa-chart-line h5"></i>Dashboard</a>
+                <a class="{{ Request::segment(1) == 'post' ? 'active' : '' }}" href="{{ route('post.index') }}"><i class="fas fa-bullhorn h5"></i>Post Content</a>
                 <a href=""><i class="fas fa-clipboard-check h5"></i>Meet Scheduler</a>
                 <a href=""><i class="far fa-calendar-alt h5"></i><p>Events</p></a>
                 <a href=""><i class="fas fa-envelope h5"></i><p>Community Mail</p></a>
@@ -87,12 +89,13 @@
         </div>
     </div>
 
-    {{-- <div class="footer">
-        <img src="img/klothee-1-white.png">
-        <p>Copyright &copy; 2019 <a href="index.php" class="highlight">Klothee Inc.</a></p>
-    </div> --}}
-
     <script type="text/javascript">
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
         $('.sidebar-profile').mouseover(function()
         {
             $('.profile-button .btn').css({'background-color' : 'rgb(140, 20, 252)', "box-shadow" : "0px 0px 25px rgba(140, 20, 252, 0.3)"})

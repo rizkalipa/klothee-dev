@@ -34,4 +34,6 @@ Route::get('/profile/{profile}/show', 'ProfileController@show')->name('profile.s
 Route::post('/profile/{profile}/update', 'ProfileController@update')->name('profile.update');
 Route::post('/profile/{profile}/store', 'ProfileController@store')->name('profile.store');
 
-
+// Handling Post
+Route::get('/post', 'PostController@index')->name('post.index');
+Route::post('/post/store/{userID}', 'PostController@store')->name('post.store');

@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Dashboard')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row mt-5">
+<div class="container mt-4 p-3">
+    <div class="row">
         <div class="col-lg">
             <div class="jumbotron bg-white shadow-sm">
                 <h1 class="display-4">Hello, world!</h1>
