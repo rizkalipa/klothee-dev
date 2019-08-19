@@ -37,3 +37,4 @@ Route::post('/profile/{profile}/store', 'ProfileController@store')->name('profil
 // Handling Post
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::post('/post/store/{userID}', 'PostController@store')->name('post.store');
+Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit');

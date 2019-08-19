@@ -45,4 +45,11 @@ class PostController extends Controller
         
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }
+
+    public function edit($id)
+    {
+        $post = \App\Post::find($id);
+
+        return view('posts.edit', ['post' => $post]);
+    }
 }

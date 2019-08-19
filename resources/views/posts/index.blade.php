@@ -16,7 +16,7 @@
                 <div class="card-body">
                     @foreach ($posts as $post)
                          @if ($post->status == 'Publish')
-                            <div class="container border rounded-lg p-3 @if($loop->iteration != 1) {{ 'my-3' }} @endif ">
+                            <div class="container border rounded-lg p-3 mb-3">
                                 <div class="row">
                                     <div class="col inline-item-center">
                                         <img src="{{ asset('storage/' . $post->user->profile->avatar) }}" class="avatar">
@@ -96,16 +96,16 @@
                 </div>
                 <div class="card-body">
                     @foreach($posts as $post)
-                        @if ($post->user_id == auth()->user()->id)
+                        @if ($post->user_id == auth()->user()->id && $post->status == 'Publish')
                             <div class="py-2 inline-content-between">
-                                <p>{{ $post->title }} <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
+                                <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
                                 <span>
-                                    <a href="">
-                                        <button class="btn btn-sm btn-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <a href="{{ route('post.edit', ['id' => $post->id]) }}">
+                                        <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="fas fa-edit"></i></button>
                                     </a>
                                     <a href="">
-                                        <button class="btn btn-sm btn-danger rounded-circle" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="fas fa-trash"></i></button>
                                     </a>
                                 </span>
@@ -123,14 +123,14 @@
                     @foreach($posts as $post)
                         @if ($post->user_id == auth()->user()->id && $post->status == 'Draft')
                             <div class="py-2 inline-content-between">
-                                <p>{{ $post->title }} <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
+                                <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
                                 <span>
-                                    <a href="">
-                                        <button class="btn btn-sm btn-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <a href="{{ route('post.edit', ['id' => $post->id]) }}">
+                                        <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="fas fa-edit"></i></button>
                                     </a>
                                     <a href="">
-                                        <button class="btn btn-sm btn-danger rounded-circle" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="fas fa-trash"></i></button>
                                     </a>
                                 </span>

@@ -36,7 +36,9 @@
             </div>
             <div class="sidebar-menu mt-4">
                 <a class="{{ Request::segment(1) == 'dashboard' ? 'active' : '' }}" href="{{ route('dashboard') }}"><i class="fas fa-chart-line h5"></i>Dashboard</a>
-                <a class="{{ Request::segment(1) == 'post' ? 'active' : '' }}" href="{{ route('post.index') }}"><i class="fas fa-bullhorn h5"></i>Post Content</a>
+                <a class="{{ Request::segment(1) == 'post' ? 'active' : '' }}" href="{{ route('post.index') }}">
+                    <i class="fas fa-bullhorn h5"></i>Post Content
+                </a>
                 <a href=""><i class="fas fa-clipboard-check h5"></i>Meet Scheduler</a>
                 <a href=""><i class="far fa-calendar-alt h5"></i><p>Events</p></a>
                 <a href=""><i class="fas fa-envelope h5"></i><p>Community Mail</p></a>
