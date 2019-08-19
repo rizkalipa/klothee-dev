@@ -15,31 +15,33 @@
                 </div>
                 <div class="card-body">
                     @foreach ($posts as $post)
-                        <div class="container border rounded-lg p-3 @if($loop->iteration != 1) {{ 'my-3' }} @endif ">
-                            <div class="row">
-                                <div class="col inline-item-center">
-                                    <img src="{{ asset('storage/' . $post->user->profile->avatar) }}" class="avatar">
-                                    <p class="text-muted">{{ $post->created_by }}</p>
-                                </div>
-                                <div class="col text-right">
-                                    <p class="text-muted">{{ $post->created_at->diffInHours(now()) . ' hours ago' }}</p>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                @if ($post->image)
-                                    <div class="col text-center">
-                                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded-lg">
+                         @if ($post->status == 'Publish')
+                            <div class="container border rounded-lg p-3 @if($loop->iteration != 1) {{ 'my-3' }} @endif ">
+                                <div class="row">
+                                    <div class="col inline-item-center">
+                                        <img src="{{ asset('storage/' . $post->user->profile->avatar) }}" class="avatar">
+                                        <p class="text-muted">{{ $post->created_by }}</p>
                                     </div>
-                                @endif
-                                <div class="col">
-                                    <h4><strong>{{ $post->title }}</strong></h4>
-                                    <p class="mt-2">{{ $post->content }}</p>
-                                    @if ($post->link)
-                                        <a href="http://{{ $post->link }}" target="blink"><button class="btn btn-primary mt-4">Visit Link</button></a>
+                                    <div class="col text-right">
+                                        <p class="text-muted">{{ $post->created_at->diffInHours(now()) . ' hours ago' }}</p>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    @if ($post->image)
+                                        <div class="col text-center">
+                                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded-lg">
+                                        </div>
                                     @endif
+                                    <div class="col">
+                                        <h4><strong>{{ $post->title }}</strong></h4>
+                                        <p class="mt-2">{{ $post->content }}</p>
+                                        @if ($post->link)
+                                            <a href="http://{{ $post->link }}" target="blink"><button class="btn btn-primary mt-4">Visit Link</button></a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -133,12 +135,12 @@
                                     </a>
                                 </span>
                             </div>
-                        {{-- Filtering wheter post is exactly have Draft status --}}
-                        @elseif(count($posts->filter(function($post){ return $post->status == 'Draft'; })) == 0)
-                            <em>No Post in Draft</em>
-                            @break
                         @endif
                     @endforeach
+                    {{-- Filtering wheter post is exactly have Draft status --}}
+                    @if(count($posts->filter(function($post){ return $post->status == 'Draft'; })) == 0)
+                        <em>No Post in Draft</em>
+                    @endif
                 </div>
             </div>
         </div>

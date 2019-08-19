@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = \App\Post::where('status', 'Publish')->orderBy('created_at', 'DESC')->get();
+        $posts = \App\Post::orderBy('created_at', 'DESC')->get();
 
         return view('posts.index', ['posts' => $posts]);
     }
