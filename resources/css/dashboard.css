@@ -103,13 +103,29 @@ body {
     font-weight: 600;
 }
 
+.avatar {
+    width: 22px;
+    border-radius: 50%;
+    margin-right: 2%;
+}
+
 .active {
     background-color: rgb(140, 20, 252);
 }
 
-active:hover {
+.active:hover {
     background-color: white;
     color: #333;
+}
+
+.inline-item-center {
+    display: flex;
+    align-items: center;
+}
+
+.inline-content-between {
+    display: flex;
+    justify-content: space-between;
 }
 
 .divider-10 {

@@ -64,7 +64,7 @@
                         </div><br><br>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg px-5">Save</button>
+                            <button type="submit" class="btn btn-primary px-4">Save</button>
                         </div>
                     </form>
                 </div>

@@ -64,11 +64,7 @@
                         </div><br><br>
 
                         <div class="form-group">
-                            @if ($user->profile)
-                                <button type="submit" class="btn btn-primary btn-lg px-5">Update</button>
-                            @else
-                                <button type="submit" class="btn btn-primary btn-lg px-5">Save</button>
-                            @endif
+                            <button type="submit" class="btn btn-primary px-4">Update</button>
                         </div>
                     </form>
                 </div>

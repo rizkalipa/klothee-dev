@@ -90,10 +90,15 @@
     </div>
 
     <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
         // Add the following code if you want the name of the file appear on select
+
         $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
 
         $('.sidebar-profile').mouseover(function()
