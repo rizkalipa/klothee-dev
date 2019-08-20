@@ -20,10 +20,10 @@
                                 <div class="row">
                                     <div class="col inline-item-center">
                                         <img src="{{ asset('storage/' . $post->user->profile->avatar) }}" class="avatar">
-                                        <p class="text-muted">{{ $post->created_by }}</p>
+                                        <a href="{{ route('profile.show', ['id' => $post->user->id]) }}"><p class="text-muted">{{ $post->created_by }}</p></a>
                                     </div>
                                     <div class="col text-right">
-                                        <p class="text-muted">{{ $post->created_at->diffInHours(now()) . ' hours ago' }}</p>
+                                        <p class="text-muted">{{ $post->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
@@ -112,6 +112,9 @@
                             </div>
                         @endif
                     @endforeach
+                    @if(count(\App\User::find(auth()->user()->id)->posts->filter(function($post) { return $post->status == 'Publish'; })) == 0)
+                        <em>You Haven't Create a Post Yet</em>
+                    @endif
                 </div>
             </div>
 
@@ -138,7 +141,7 @@
                         @endif
                     @endforeach
                     {{-- Filtering wheter post is exactly have Draft status --}}
-                    @if(count($posts->filter(function($post){ return $post->status == 'Draft'; })) == 0)
+                    @if(count(\App\User::find(auth()->user()->id)->posts->filter(function($post) { return $post->status == 'Draft'; })) == 0)
                         <em>No Post in Draft</em>
                     @endif
                 </div>

@@ -29,11 +29,18 @@
                                     <small class="text-danger">{{ $errors->first('title') }}</small><br>
                                 @endif
                             </div>
+
+                            @if ($post->image)
+                                <div class="form-group">
+                                    <label>Current Image</label><br>
+                                    <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid img-thumbnail">
+                                </div>
+                            @endif
     
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="image">
-                                    <label class="custom-file-label" for="inputGroupFile01">Image Content</label>
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="image">Image Content</label>
                                 </div>
                             </div>
     

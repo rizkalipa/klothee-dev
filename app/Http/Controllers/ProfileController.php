@@ -29,11 +29,6 @@ class ProfileController extends Controller
 
         $profile = $user->profile;
 
-        if (! Gate::allows('show-profile', $profile))
-        {
-            return redirect()->route('profile.show', ['id' => auth()->user()->id]);
-        }
-
         return view('profiles.show', ['user' => $user]);
     }
 
@@ -41,7 +36,7 @@ class ProfileController extends Controller
     {
         $profile = \App\Profile::where('user_id', $id)->first();
 
-        $this->authorize('update-profile', $profile);
+        $this->authorize('edit-profile', $profile);
 
         $request->validate([
             'first_name' => 'required|max:25',
