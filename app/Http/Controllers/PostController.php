@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Mail;
 
 class PostController extends Controller
 {
+    use SerializesModels;
+
     public function index()
     {
-        $posts = \App\Post::orderBy('created_at', 'DESC')->get();
+        $posts = \App\Post::orderBy('created_at', 'DESC')->paginate(6);
 
         return view('posts.index', ['posts' => $posts]);
     }
@@ -42,6 +47,8 @@ class PostController extends Controller
         }
 
         $post->save();
+
+        Mail::to(\App\User::get())->send(new \App\Mail\PostUpdate($user, $post));
         
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }
