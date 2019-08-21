@@ -29,7 +29,7 @@ body {
 
 .header {
     background-color:transparent;
-    padding: 18px;
+    padding: 18px 30px;
     color: #333333;
     margin-bottom: 45px;
     display: flex;
@@ -103,7 +103,7 @@ body {
 
 .header ul li {
     display: inline-block;
-    margin: 0 17px;
+    margin: 0 0 0 17px;
     font-size: 1fr;
 }
 

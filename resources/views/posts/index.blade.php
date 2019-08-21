@@ -96,24 +96,23 @@
                     <h4><span class="highlight">Published</span> Post</h4>
                 </div>
                 <div class="card-body">
-                    @foreach($posts as $post)
-                        @if ($post->user_id == auth()->user()->id && $post->status == 'Publish')
-                            <div class="py-2 inline-content-between">
-                                <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
-                                <span>
-                                    <a href="{{ route('post.edit', ['id' => $post->id]) }}">
-                                        <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="fas fa-edit"></i></button>
-                                    </a>
-                                    <a href="">
-                                        <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="fas fa-trash"></i></button>
-                                    </a>
-                                </span>
-                            </div>
-                        @endif
+                    @foreach($postPublished as $post)
+                        <div class="py-2 inline-content-between">
+                            <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
+                            <span>
+                                <a href="{{ route('post.edit', ['id' => $post->id]) }}">
+                                    <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="fas fa-edit"></i></button>
+                                </a>
+                                <a href="">
+                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="fas fa-trash"></i></button>
+                                </a>
+                            </span>
+                        </div>
                     @endforeach
-                    @if(count(\App\User::find(auth()->user()->id)->posts->filter(function($post) { return $post->status == 'Publish'; })) == 0)
+
+                    @if(!filled($postPublished))
                         <em>You Haven't Create a Post Yet</em>
                     @endif
                 </div>
@@ -124,25 +123,23 @@
                     <h4><span class="highlight">Draft</span> Post</h4>
                 </div>
                 <div class="card-body">
-                    @foreach($posts as $post)
-                        @if ($post->user_id == auth()->user()->id && $post->status == 'Draft')
-                            <div class="py-2 inline-content-between">
-                                <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
-                                <span>
-                                    <a href="{{ route('post.edit', ['id' => $post->id]) }}">
-                                        <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="fas fa-edit"></i></button>
-                                    </a>
-                                    <a href="">
-                                        <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="fas fa-trash"></i></button>
-                                    </a>
-                                </span>
-                            </div>
-                        @endif
+                    @foreach($postDraft as $post)
+                        <div class="py-2 inline-content-between">
+                            <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
+                            <span>
+                                <a href="{{ route('post.edit', ['id' => $post->id]) }}">
+                                    <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="fas fa-edit"></i></button>
+                                </a>
+                                <a href="">
+                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="fas fa-trash"></i></button>
+                                </a>
+                            </span>
+                        </div>
                     @endforeach
-                    {{-- Filtering wheter post is exactly have Draft status --}}
-                    @if(count(\App\User::find(auth()->user()->id)->posts->filter(function($post) { return $post->status == 'Draft'; })) == 0)
+
+                    @if(!filled($postDraft))
                         <em>No Post in Draft</em>
                     @endif
                 </div>

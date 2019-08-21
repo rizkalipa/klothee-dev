@@ -25,6 +25,14 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        View::composer('posts.index', function($view)
+        {
+            $user = auth()->user();
+
+            $postPublished = \App\Post::where('user_id', $user->id)->where('status', 'Publish')->get();
+            $postDraft = \App\Post::where('user_id', $user->id)->where('status', 'Draft')->get();
+
+            return $view->with(['postPublished' => $postPublished, 'postDraft' => $postDraft]);
+        });
     }
 }
