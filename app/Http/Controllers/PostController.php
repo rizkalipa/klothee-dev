@@ -47,8 +47,6 @@ class PostController extends Controller
         }
 
         $post->save();
-
-        Mail::to(\App\User::get())->send(new \App\Mail\PostUpdate($user, $post));
         
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }
