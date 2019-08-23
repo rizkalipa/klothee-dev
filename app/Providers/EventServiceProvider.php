@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
 
         \App\Events\PostUpdate::class => [
             \App\Listeners\EmailAuthor::class,
-        ],
+        ]
     ];
 
     /**
