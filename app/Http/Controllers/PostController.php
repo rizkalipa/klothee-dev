@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Event;
 use Mail;
 
 class PostController extends Controller
@@ -40,16 +41,15 @@ class PostController extends Controller
         $post->user_id = $user->id;
         $post->status = $request->get('status');
 
-        if ($request->hasFile('image') && $request->file('image')->isValid())
-        {
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $path = $request->image->store('image_contents', 'public');
             $post->image = $path;
         }
 
         $post->save();
 
-        Mail::to(\App\User::get())->send(new \App\Mail\PostUpdate($user, $post));
-        
+        event(new \App\Events\PostNewUpdate($user, $post));
+
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }
 
@@ -58,5 +58,13 @@ class PostController extends Controller
         $post = \App\Post::find($id);
 
         return view('posts.edit', ['post' => $post]);
+    }
+
+    public function delete($id)
+    {
+        $post = \App\Post::find($id);
+        $post->delete();
+
+        return redirect()->route('post.index')->with('status', "Post Successfully Deleted!");
     }
 }

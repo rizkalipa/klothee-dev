@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        event(new \App\Events\LoginNotify(auth()->user()));
+
         return view('home');
     }
 }
