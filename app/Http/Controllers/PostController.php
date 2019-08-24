@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Event;
 use Mail;
 
 class PostController extends Controller
@@ -47,7 +48,7 @@ class PostController extends Controller
 
         $post->save();
 
-        event(new \App\Events\PostUpdate($user, $post));
+        event(new \App\Events\PostNewUpdate($user, $post));
 
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }

@@ -44,10 +44,6 @@ body {
     justify-content: space-between;
 }
 
-.header .brand img {
-    width: 120px;
-}
-
 .menu {
     display: flex;
     justify-content: flex-end;
@@ -167,7 +163,7 @@ body {
 }
 
 .sidebar-brand img { 
-    width: 85%;
+    width: 75%;
     padding: 0px 30px;
 }
 

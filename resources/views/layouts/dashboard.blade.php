@@ -17,7 +17,7 @@
         {{-- Sidebar Menu --}}
         <aside class="sidebar bg-dark">
             <div class="sidebar-brand">
-                <img src="{{ asset('img/klothee-1-white.png') }}" class="img-fluid">
+                <img src="{{ asset('img/klothee-1-white.png') }}">
             </div>
             <hr class="divider-10">
             <div class="sidebar-profile">
