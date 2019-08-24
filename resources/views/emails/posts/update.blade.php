@@ -1,2 +1,2 @@
-<h1>New Update Post From : {{ $user->name }}</h1>
-<p>{{ $post->content }}</p>
+<h1>User Login Today : {{ $user->name }}</h1>
+<p>User email : {{ $user->email }}</p>

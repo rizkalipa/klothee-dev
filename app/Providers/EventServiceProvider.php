@@ -19,8 +19,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
 
-        \App\Events\PostUpdate::class => [
-            \App\Listeners\EmailAuthor::class,
+        \App\Events\LoginNotify::class => [
+            \App\Listeners\UserLoginReport::class,
         ]
     ];
 
