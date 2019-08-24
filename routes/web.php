@@ -20,10 +20,8 @@ Auth::routes(['reset' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Dashboard Access
-Route::middleware('can:access-dashboard')->group(function()
-{
-    Route::get('/dashboard', function()
-    {
+Route::middleware('can:access-dashboard')->group(function () {
+    Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
     Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
@@ -38,3 +36,4 @@ Route::post('/profile/{profile}/store', 'ProfileController@store')->name('profil
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::post('/post/store/{userID}', 'PostController@store')->name('post.store');
 Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit');
+Route::delete('/post/{id}/delete', 'PostController@delete')->name('post.delete');

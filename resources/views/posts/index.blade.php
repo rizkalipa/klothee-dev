@@ -99,15 +99,22 @@
                     @foreach($postPublished as $post)
                         <div class="py-2 inline-content-between">
                             <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
-                            <span>
+                            <span class="d-flex">
                                 <a href="{{ route('post.edit', ['id' => $post->id]) }}">
                                     <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="fas fa-edit"></i></button>
                                 </a>
-                                <a href="">
+                                {{-- <a href="">
                                     <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <i class="fas fa-trash"></i></button>
-                                </a>
+                                </a> --}}
+                                <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    <button class="btn btn-sm btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="fas fa-trash"></i></button>
+                                    </button>
+                                </form>
                             </span>
                         </div>
                     @endforeach
@@ -126,15 +133,18 @@
                     @foreach($postDraft as $post)
                         <div class="py-2 inline-content-between">
                             <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
-                            <span>
+                            <span class="d-flex">
                                 <a href="{{ route('post.edit', ['id' => $post->id]) }}">
                                     <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="fas fa-edit"></i></button>
                                 </a>
-                                <a href="">
-                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    <button class="btn btn-sm btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <i class="fas fa-trash"></i></button>
-                                </a>
+                                    </button>
+                                </form>
                             </span>
                         </div>
                     @endforeach
