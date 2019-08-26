@@ -34,7 +34,7 @@
                                         <span class="highlight" style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
                                     </div>
                                     <div class="col-md-11">
-                                        <p><strong>{{ $schedule->date_time->format('h:i | l, d F') }}</strong></p>
+                                        <p><strong>{{ $schedule->date_time->format('H:i | l, d F') }}</strong></p>
                                         <p>Place : {{ $schedule->place  }}</p>
                                         <p class="mt-2">{{ $schedule->meeting_purpose }}</p>
                                     </div>
