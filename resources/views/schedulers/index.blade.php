@@ -20,12 +20,10 @@
 
                     @endcomponent
                 </div>
-            </div>
-
-            <div class="card mt-4 border-0 shadow-sm">
-                <div class="card-body">
+                <div class="card-footer bg-white border-0">
                     <h5 class="card-title">Schedule This Month :</h5>
                     <div class="calendar-note">
+                        <hr>
                         <em>No Schedule This Month</em>
                         <hr>
                     </div>
@@ -80,6 +78,7 @@
                                     <label>Minute</label>
                                     <select name="time_minute" class="custom-select @error('time_hour') is-invalid @enderror">
                                         <option value="00">00</option>
+                                        <option value="15">15</option>
                                         <option value="30">30</option>
                                         <option value="45">45</option>
                                     </select>
