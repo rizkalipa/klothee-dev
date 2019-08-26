@@ -7,6 +7,7 @@
     <title>Admin Dashboard</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    @stack('css')
     <link rel="icon" href="{{ asset('img/1559034957.ico') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
@@ -39,7 +40,9 @@
                 <a class="{{ Request::segment(1) == 'post' ? 'active' : '' }}" href="{{ route('post.index') }}">
                     <i class="fas fa-bullhorn h5"></i>Post Content
                 </a>
-                <a href=""><i class="fas fa-clipboard-check h5"></i>Meet Scheduler</a>
+                <a class="{{ Request::segment(1) == 'scheduler' ? 'active' : '' }}" href="{{ route('scheduler.index') }}">
+                    <i class="fas fa-clipboard-check h5"></i>Meet Scheduler
+                </a>
                 <a href=""><i class="far fa-calendar-alt h5"></i><p>Events</p></a>
                 <a href=""><i class="fas fa-envelope h5"></i><p>Community Mail</p></a>
                 <a href=""><i class="fas fa-user-friends h5"></i><p>Member Manager</p></a>

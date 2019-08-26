@@ -23,4 +23,5 @@ const mix = require('laravel-mix');
 
         mix.styles(['resources/css/dashboard.css',
             'resources/css/all.min.css'], 'public/css/dashboard.css')
+        mix.styles('resources/css/calendar.css', 'public/css/calendar.css')
     // .copyDirectory('resources/img', 'public/img');

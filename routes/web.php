@@ -34,3 +34,6 @@ Route::post('/profile/{profile}/store', 'ProfileController@store')->name('profil
 
 // Handling Post
 Route::resource('post', 'PostController');
+
+// Handling Meeting Scheduler
+Route::get('/scheduler', 'ScheduleController@index')->name('scheduler.index');
