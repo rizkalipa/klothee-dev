@@ -20,10 +20,10 @@ class PostController extends Controller
         return view('posts.index', ['posts' => $posts]);
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $post = new \App\Post;
-        $user = \App\User::find($id);
+        $user = auth()->user();
 
         $request->validate([
             'title' => 'required|max:35',
@@ -47,8 +47,6 @@ class PostController extends Controller
         }
 
         $post->save();
-
-        event(new \App\Events\PostNewUpdate($user, $post));
 
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }

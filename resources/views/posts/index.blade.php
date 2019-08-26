@@ -56,7 +56,7 @@
                     <h4><span class="highlight"><i class="fas fa-edit mr-3"></i></span> Write Post</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('post.store', ['id' => auth()->user()->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title" autocomplete="off">
@@ -104,10 +104,6 @@
                                     <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="fas fa-edit"></i></button>
                                 </a>
-                                {{-- <a href="">
-                                    <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <i class="fas fa-trash"></i></button>
-                                </a> --}}
                                 <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
