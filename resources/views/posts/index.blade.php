@@ -108,7 +108,7 @@
                                     <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <i class="fas fa-trash"></i></button>
                                 </a> --}}
-                                <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST">
+                                <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
                                     <button class="btn btn-sm btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -138,7 +138,7 @@
                                     <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="fas fa-edit"></i></button>
                                 </a>
-                                <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST">
+                                <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
                                     <button class="btn btn-sm btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Delete">

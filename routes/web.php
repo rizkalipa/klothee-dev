@@ -33,7 +33,4 @@ Route::post('/profile/{profile}/update', 'ProfileController@update')->name('prof
 Route::post('/profile/{profile}/store', 'ProfileController@store')->name('profile.store');
 
 // Handling Post
-Route::get('/post', 'PostController@index')->name('post.index');
-Route::post('/post/store/{userID}', 'PostController@store')->name('post.store');
-Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit');
-Route::delete('/post/{id}/delete', 'PostController@delete')->name('post.delete');
+Route::resource('post', 'PostController');

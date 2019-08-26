@@ -53,6 +53,33 @@ class PostController extends Controller
         return redirect()->route('post.index')->with('status', "Post Saved to " . $post->status);
     }
 
+    public function update(Request $request, $id)
+    {
+        $post = \App\Post::find($id);
+
+        $request->validate([
+            'title' => 'required|max:35',
+            'content' => 'required|max:350'
+        ]);
+
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+
+        $post->link = Str::after($request->input('link'), 'http://');
+        $post->link = Str::after($request->input('link'), 'https://');
+
+        $post->status = $request->get('status');
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $path = $request->image->store('image_contents', 'public');
+            $post->image = $path;
+        }
+
+        $post->save();
+
+        return redirect()->route('post.index')->with('status', "Post Updated! and Saved to " . $post->status);
+    }
+
     public function edit($id)
     {
         $post = \App\Post::find($id);
@@ -60,7 +87,7 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $post = \App\Post::find($id);
         $post->delete();

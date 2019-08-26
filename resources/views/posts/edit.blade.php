@@ -12,7 +12,8 @@
                 </div>
                 <div class="card-body">
                     <div class="form">
-                        <form action="{{ route('post.store', ['id' => auth()->user()->id]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('post.update', ['id' => $post->id]) }}" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_method" value="PUT">
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" 
