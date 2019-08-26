@@ -37,3 +37,4 @@ Route::resource('post', 'PostController');
 
 // Handling Meeting Scheduler
 Route::get('/scheduler', 'ScheduleController@index')->name('scheduler.index');
+Route::post('/scheduler/store', 'ScheduleController@store')->name('scheduler.store');

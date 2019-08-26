@@ -10,6 +10,9 @@
 <div class="container mt-4 p-3">
     <div class="row">
         <div class="col-md-7">
+            @if(session('status'))
+                <div class="alert alert-success mb-2">{{ session('status') }}</div>
+            @endif
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white inline-content-between">
                     <h4><span class="highlight"><i class="far fa-calendar-alt mr-3"></i></span> {{ now()->format('F, Y') }}</h4>
@@ -24,8 +27,25 @@
                     <h5 class="card-title">Schedule This Month :</h5>
                     <div class="calendar-note">
                         <hr>
-                        <em>No Schedule This Month</em>
-                        <hr>
+                        @if(auth()->user()->schedules)
+                            @foreach(auth()->user()->schedules as $schedule)
+                                <div class="row">
+                                    <div class="col-md-1 text-center">
+                                        <span class="highlight" style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <p><strong>{{ $schedule->date_time->format('h:i | l, d F') }}</strong></p>
+                                        <p>Place : {{ $schedule->place  }}</p>
+                                        <p class="mt-2">{{ $schedule->meeting_purpose }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                            @endforeach
+                        @else
+                            <hr>
+                            <em>No Schedule This Month</em>
+                            <hr>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -36,7 +56,8 @@
                     <h4><span class="highlight"><i class="fas fa-edit mr-3"></i></span> Meeting Planner</h4>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ route('scheduler.store') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label for="place">Place</label>
                             <input type="text" name="place" class="form-control @error('place') is-invalid @enderror" placeholder="Where..." autocomplete="off">
