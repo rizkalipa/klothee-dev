@@ -1,13 +1,14 @@
 .calendar-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    grid-row-gap: 15%;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
 }
 
 .calendar-date {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.calendar-date p {
-    width: 25px;
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 12px;
 }
