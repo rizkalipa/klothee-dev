@@ -5,6 +5,7 @@
     grid-column-gap: 15px;
 }
 
+.calendar-container a,
 .calendar-container p {
     text-align: center;
     position: relative;
@@ -12,24 +13,20 @@
 
 .calendar-date {
     width: 100%;
-    text-align: center;
     font-size: 1rem;
     padding: 12px;
 }
 
 .selected-date {
-    color: var(--primary);
-    font-size: 1rem;
-    font-weight: 500;
+    color: var(--primary) !important;
+    font-weight: bolder;
     position: relative;
-    text-align: center;
-    padding: 12px;
 }
 
 .selected-date::before {
     content: '';
     background-color: var(--primary);
-    width: 70%;
+    width: 50%;
     height: 4px;
     border-radius: 15px;
     margin: auto;
@@ -38,3 +35,36 @@
     left: 0;
     right: 0;
 }
+
+
+.event-date { color: white !important; }
+.event-date::before { color: white; background-color: var(--primary) !important; }
+
+.event-past-date { color: #888; }
+.event-past-date::before { color: white; background-color: #dddbdb; }
+
+.event-date,
+.event-past-date {
+    position: relative;
+    z-index: 0;
+}
+
+.event-date:before,
+.event-past-date::before {
+    content: '';
+    width: 60%;
+    height: 80%;
+    border-radius: 50%;
+    margin: auto;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.past-date { color: #888; }
+
+.red-date { color: red; }
+

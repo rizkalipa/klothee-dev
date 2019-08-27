@@ -16,10 +16,16 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white inline-content-between">
                     <h4><span class="highlight"><i class="far fa-calendar-alt mr-3"></i></span> {{ now()->format('F, Y') }}</h4>
-                    <div class="badge badge-danger d-flex align-items-center"><em>No Plan</em></div>
+                    <div class="badge badge-danger d-flex align-items-center">
+                        @if($scheduleThisMonth)
+                            <p style="font-size: 1rem">{{ $scheduleThisMonth->count() }} Plan</p>
+                        @else
+                            <em>No Plan</em>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-body">
-                    @component('components.calendar') 
+                    @component('components.calendar', ['schedules' => $scheduleThisMonth]) 
 
                     @endcomponent
                 </div>
@@ -27,8 +33,8 @@
                     <h5 class="card-title">Schedule This Month :</h5>
                     <div class="calendar-note">
                         <hr>
-                        @if(auth()->user()->schedules)
-                            @foreach(auth()->user()->schedules as $schedule)
+                        @if($scheduleThisMonth)
+                            @foreach($scheduleThisMonth as $schedule)
                                 <div class="row">
                                     <div class="col-md-1 text-center">
                                         <span class="highlight" style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
