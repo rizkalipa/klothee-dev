@@ -1,14 +1,40 @@
 .calendar-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-columns: repeat(7, minmax(50px, 1fr));
     grid-row-gap: 15px;
     grid-column-gap: 15px;
 }
 
+.calendar-container p {
+    text-align: center;
+    position: relative;
+}
+
 .calendar-date {
-    /* border: 1px solid rgba(0, 0, 0, 0.2); */
     width: 100%;
     text-align: center;
     font-size: 1rem;
     padding: 12px;
+}
+
+.selected-date {
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    padding: 12px;
+}
+
+.selected-date::before {
+    content: '';
+    background-color: var(--primary);
+    width: 70%;
+    height: 4px;
+    border-radius: 15px;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
