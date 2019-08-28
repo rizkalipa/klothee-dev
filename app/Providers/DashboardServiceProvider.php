@@ -36,7 +36,7 @@ class DashboardServiceProvider extends ServiceProvider
             return $view->with(['postPublished' => $postPublished, 'postDraft' => $postDraft]);
         });
 
-        View::composer('components.calendar', function($view)
+        View::composer(['components.calendar', 'components.calendar-nodata'], function($view)
         {
             $thisMonth = Carbon::create('Asia/Jakarta');
 

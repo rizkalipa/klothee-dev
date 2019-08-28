@@ -19,7 +19,7 @@ class CreateSchedulesTable extends Migration
             $table->text('meeting_purpose');
             $table->timestamp('date_time');
             $table->string('note')->nullable();
-            $table->enum('author_response', ['Accept', 'Decline'])->default('Decline')->nullable();
+            $table->enum('author_response', ['Accept', 'Decline', 'Waiting'])->default('Waiting')->nullable();
             $table->bigInteger('author_id')->unsigned()->nullable();
             $table->bigInteger('user_id')->unsigned();
 

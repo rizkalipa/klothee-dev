@@ -8,10 +8,11 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = \App\Schedule::get();
+        $schedules = \App\Schedule::get()->sortBy('date_time');
+
         $scheduleThisMonth = $schedules->filter(function($schedule) { return  $schedule->date_time->month == now()->month; });
 
-        return view('schedulers.index', ['schedules' => $schedules, 'scheduleThisMonth' => $scheduleThisMonth]);
+        return view('schedulers.index', ['scheduleThisMonth' => $scheduleThisMonth]);
     }
 
     public function store(Request $request)

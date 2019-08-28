@@ -11,6 +11,12 @@
     position: relative;
 }
 
+.calendar-note {
+    max-height: 360px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .calendar-date {
     width: 100%;
     font-size: 1rem;

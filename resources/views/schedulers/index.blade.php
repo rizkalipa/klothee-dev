@@ -13,6 +13,14 @@
             @if(session('status'))
                 <div class="alert alert-success mb-2">{{ session('status') }}</div>
             @endif
+            @if($scheduleThisMonth->first()->dateSchedule(now()->day))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <p style="font-size: 1rem">You Have Schedule <strong>Today!</strong></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white inline-content-between">
                     <h4><span class="highlight"><i class="far fa-calendar-alt mr-3"></i></span> {{ now()->format('F, Y') }}</h4>
@@ -25,22 +33,27 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @component('components.calendar', ['schedules' => $scheduleThisMonth]) 
-
-                    @endcomponent
+                    @if (filled($scheduleThisMonth->where('author_response', 'Accept')))
+                        @include('components.calendar', ['scheduleThisMonth' => $scheduleThisMonth])
+                    @else
+                        @include('components.calendar-nodata')
+                    @endif
                 </div>
                 <div class="card-footer bg-white border-0">
                     <h5 class="card-title">Schedule This Month :</h5>
                     <div class="calendar-note">
                         <hr>
-                        @if($scheduleThisMonth)
+                        @if(filled($scheduleThisMonth->where('author_response', 'Accept')))
                             @foreach($scheduleThisMonth as $schedule)
                                 <div class="row">
                                     <div class="col-md-1 text-center">
                                         <span class="highlight" style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
                                     </div>
-                                    <div class="col-md-11">
-                                        <p><strong>{{ $schedule->date_time->format('H:i | l, d F') }}</strong></p>
+                                    <div class="col-md-11 pr-4">
+                                        <div class="inline-content-between">
+                                            <p><strong>{{ $schedule->date_time->format('H:i | l, d F') }}</strong></p>
+                                            <!-- Modal -->
+                                            @include('components.modal', ['object' => $schedule])
                                         <p>Place : {{ $schedule->place  }}</p>
                                         <p class="mt-2">{{ $schedule->meeting_purpose }}</p>
                                     </div>
@@ -48,7 +61,6 @@
                                 <hr>
                             @endforeach
                         @else
-                            <hr>
                             <em>No Schedule This Month</em>
                             <hr>
                         @endif
@@ -93,8 +105,8 @@
                                 <div class="col-md">
                                     <label>Time</label>
                                     <select name="time_hour" class="custom-select @error('time_hour') is-invalid @enderror">
-                                        @for($i = 7; $i <= 20; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @for($i = 20; $i >= 7; $i--)
+                                            <option value="{{ $i }}" {{ $i == 7 ? 'selected' : '' }}>{{ $i }}</option>
                                         @endfor
                                     </select>
                                     @if($errors->has('time_hour'))
@@ -104,10 +116,10 @@
                                 <div class="col-md">
                                     <label>Minute</label>
                                     <select name="time_minute" class="custom-select @error('time_hour') is-invalid @enderror">
-                                        <option value="00">00</option>
-                                        <option value="15">15</option>
-                                        <option value="30">30</option>
-                                        <option value="45">45</option>
+                                            <option value="45">45</option>
+                                            <option value="30">30</option>
+                                            <option value="15">15</option>
+                                            <option value="00" selected>00</option>
                                     </select>
                                 </div>
                             </div>
@@ -127,6 +139,15 @@
                     </form>
                 </div>
             </div>
+
+            @if ($scheduleThisMonth)
+                {{-- Schedule status approve --}}
+                <div class="card border-0 shadow-sm bg-primary mt-4">
+                    <div class="card-body">
+                        <h5>Schedule Status</h5>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>
