@@ -95,6 +95,10 @@
     </div>
 
     <script type="text/javascript">
+        $(function() {
+            $('[data-toggle="popover"]').popover('show')
+        })
+
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })

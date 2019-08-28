@@ -64,6 +64,23 @@
     right: 0;
 }
 
+.event-date-today { color: white !important; z-index: 0; }
+
+.event-date-today::before {
+    content: '';
+    width: 100%;
+    height: 80%;
+    border-radius: 20px;
+    margin: auto;
+    position: absolute;
+    background-color: var(--primary);
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 .past-date { color: #888; }
 
 .red-date { color: red; }

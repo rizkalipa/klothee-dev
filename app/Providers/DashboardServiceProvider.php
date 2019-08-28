@@ -38,8 +38,7 @@ class DashboardServiceProvider extends ServiceProvider
 
         View::composer('components.calendar', function($view)
         {
-            $thisMonth = new Carbon;
-            $eventDate = \App\Schedule::get('date_time')->filter(function($schedule) { return  $schedule->date_time->month == now()->month; });
+            $thisMonth = Carbon::create('Asia/Jakarta');
 
             switch( $thisMonth->startOfMonth()->format('D') )
             {
@@ -59,7 +58,7 @@ class DashboardServiceProvider extends ServiceProvider
                             break;
             }
 
-            return $view->with(['firstDaySpan' => $firstMonthSpan, 'thisMonth' => $thisMonth, 'eventDate' => $eventDate]);
+            return $view->with(['firstDaySpan' => $firstMonthSpan, 'thisMonth' => $thisMonth]);
         });
     }
 }
