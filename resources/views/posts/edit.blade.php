@@ -3,7 +3,6 @@
 @section('title', 'Edit Post')
 
 @section('content')
-<div class="container mt-4 p-3">
     <div class="row">
         <div class="col-md-10 mx-auto">
             <div class="card border-0 shadow-sm">
@@ -60,5 +59,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

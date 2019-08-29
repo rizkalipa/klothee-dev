@@ -58,8 +58,8 @@
 .event-date:before,
 .event-past-date::before {
     content: '';
-    width: 60%;
-    height: 80%;
+    width: 43px;
+    height: 43px;
     border-radius: 50%;
     margin: auto;
     position: absolute;

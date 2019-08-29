@@ -2,11 +2,11 @@
  * My Own Style CSS !!
  * 
  */
- *, ul, p, h5, h4 {
-    padding: 0;
-    margin: 0;
-}
 
+ /* Font Adjustment */
+ *, ul, p, h5, h4 { padding: 0; margin: 0; }
+h5 { font-size: 1rem; }
+h4 { font-size: 1.25rem; }
 a, a:hover {
     text-decoration: none;
     color: inherit;
@@ -134,6 +134,7 @@ body {
 .sidebar {
     width: 25%;
     min-height: 100vh;
+    max-width: 300px;
 }
 
 .sidebar-menu {
@@ -150,7 +151,7 @@ body {
 .sidebar-menu a {
     color: #FFF;
     padding: 18px 20px;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .sidebar-menu a:hover {

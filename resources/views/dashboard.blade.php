@@ -3,7 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container mt-4 p-3">
     <div class="row">
         <div class="col-lg">
             <div class="jumbotron bg-white shadow-sm">
@@ -15,6 +14,4 @@
             </div>
         </div>
     </div>
-</div>
-
 @endsection

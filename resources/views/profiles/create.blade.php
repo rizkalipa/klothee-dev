@@ -3,7 +3,6 @@
 @section('title', 'Create Profile')
 
 @section('content')
-<div class="container mt-4 p-3">
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             @if(session('status'))
@@ -71,5 +70,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

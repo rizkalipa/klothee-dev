@@ -7,7 +7,6 @@
 @endpush
 
 @section('content')
-<div class="container mt-4 p-3">
     <div class="row">
         <div class="col-md-7">
             @if(session('status'))
@@ -26,13 +25,6 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white inline-content-between">
                     <h4><span class="highlight"><i class="far fa-calendar-alt mr-3"></i></span> {{ now()->format('F, Y') }}</h4>
-                    <div class="badge badge-danger d-flex align-items-center">
-                        @if($scheduleThisMonth)
-                            <p style="font-size: 1rem">{{ $scheduleThisMonth->count() }} Plan</p>
-                        @else
-                            <em>No Plan</em>
-                        @endif
-                    </div>
                 </div>
                 <div class="card-body">
                     @if (filled($scheduleThisMonth->where('author_response', 'Accept')))
@@ -175,11 +167,11 @@
                     </form>
                 </div>
             </div>
-            @if($scheduleThisMonth)
-                {{-- Schedule status approve --}}
-                <div class="card border-0 shadow-sm bg-primary mt-4">
-                    <div class="card-body">
-                        <h5 class="mb-4"><em>Waiting For Response</em></h5>
+            {{-- Schedule status approve --}}
+            <div class="card border-0 shadow-sm bg-primary mt-4">
+                <div class="card-body">
+                    <h5 class="mb-4 text-center"><em>Waiting For Response</em></h5>
+                    @if(filled($scheduleThisMonth->filter(function($schedule) { return $schedule->author_response == 'Waiting'; })))
                         @foreach($scheduleThisMonth as $schedule)
                             @if($schedule->author_response == 'Waiting')
                                 <div class="row mb-3">
@@ -196,10 +188,11 @@
                                 </div>
                             @endif
                         @endforeach
+                    @else
+                        <p class="text-center"><strong>-- No Schedule Submitted --</strong></p>
+                    @endif
                     </div>
                 </div>
-            @endif
         </div>
     </div>
-</div>
 @endsection

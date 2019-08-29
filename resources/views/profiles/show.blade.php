@@ -3,7 +3,6 @@
 @section('title', 'User Profile')
 
 @section('content')
-<div class="container mt-4 p-3">
     <div class="row">
         @can("edit-profile", $user->profile)
             <div class="col-md-5">
@@ -98,5 +97,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

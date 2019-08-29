@@ -86,7 +86,9 @@
                 </div>  
             </div>
 
-        @yield('content')
+        <div class="container-fluid mt-4 p-3">
+            @yield('content')
+        </div>
 
         <div class="footer text-center p-4 mt-5 border-top">
             <h5>&copy; 2019 <span class="highlight">Klothee, inc</span></h5>
