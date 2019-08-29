@@ -35,5 +35,10 @@ class AuthServiceProvider extends ServiceProvider
         {
             return $user->id === $profile->user_id;
         });
+
+        Gate::define('authorization', function($user)
+        {
+            return $user->role === 'Author';
+        });
     }
 }

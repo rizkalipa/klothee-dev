@@ -22,6 +22,11 @@ class ProfileController extends Controller
     {
         $user = \App\User::findOrFail($id);
 
+        if(! auth()->user()->can('access-dashboard'))
+        {
+            return redirect()->route('home');
+        }
+
         if(! $user->profile)
         {
             return redirect()->route('profile.create');

@@ -5,16 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Event;
 use Mail;
 
 class PostController extends Controller
 {
-    use SerializesModels;
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
+        if(! auth()->user()->can('access-dashboard'))
+        {
+            return redirect()->route('home');
+        }
+
         $posts = \App\Post::orderBy('created_at', 'DESC')->paginate(6);
 
         return view('posts.index', ['posts' => $posts]);

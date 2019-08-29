@@ -18,7 +18,7 @@ class Schedule extends Model
 
     public function dateSchedule($value)
     {
-        $value = \App\Schedule::get()->first(function($date) use($value) { return $date->date_time->day == $value; });
+        $value = \App\Schedule::get()->first(function($date) use($value) { return ($date->date_time->day == $value) && ($date->author_response == 'Accept'); });
         return $value;
     }
 

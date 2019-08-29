@@ -13,13 +13,15 @@
             @if(session('status'))
                 <div class="alert alert-success mb-2">{{ session('status') }}</div>
             @endif
-            @if($scheduleThisMonth->first()->dateSchedule(now()->day))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <p style="font-size: 1rem">You Have Schedule <strong>Today!</strong></p>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+            @if(filled($scheduleThisMonth))
+                @if($scheduleThisMonth->first()->dateSchedule(now()->day))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <p style="font-size: 1rem">You Have Schedule <strong>Today!</strong></p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
             @endif
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white inline-content-between">
@@ -45,20 +47,22 @@
                         <hr>
                         @if(filled($scheduleThisMonth->where('author_response', 'Accept')))
                             @foreach($scheduleThisMonth as $schedule)
-                                <div class="row">
-                                    <div class="col-md-1 text-center">
-                                        <span class="highlight" style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
+                                @if($schedule->author_response == 'Accept')
+                                    <div class="row">
+                                        <div class="col-md-1 text-center">
+                                            <span class="highlight" style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
+                                        </div>
+                                        <div class="col-md-11 pr-4">
+                                            <div class="inline-content-between">
+                                                <p><strong>{{ $schedule->date_time->format('H:i | l, d F') }}</strong></p>
+                                                <!-- Modal -->
+                                                @include('components.modal', ['object' => $schedule])
+                                            <p>Place : {{ $schedule->place  }}</p>
+                                            <p class="mt-2">{{ $schedule->meeting_purpose }}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-11 pr-4">
-                                        <div class="inline-content-between">
-                                            <p><strong>{{ $schedule->date_time->format('H:i | l, d F') }}</strong></p>
-                                            <!-- Modal -->
-                                            @include('components.modal', ['object' => $schedule])
-                                        <p>Place : {{ $schedule->place  }}</p>
-                                        <p class="mt-2">{{ $schedule->meeting_purpose }}</p>
-                                    </div>
-                                </div>
-                                <hr>
+                                    <hr>
+                                @endif
                             @endforeach
                         @else
                             <em>No Schedule This Month</em>
@@ -69,6 +73,38 @@
             </div>
         </div>
         <div class="col-md-5">
+            @can('authorization')
+                @if(filled($scheduleThisMonth->filter(function($schedule) { return $schedule->author_response == 'Waiting'; })))
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="mb-4 highlight">Schedule Request</h5>
+                            <hr>
+                            @foreach($scheduleThisMonth as $schedule)
+                                @if($schedule->author_response == 'Waiting')
+                                    <div class="row mb-3">
+                                        <div class="col-md-7">
+                                            <p>{{ $schedule->user->name }}</p>
+                                            <small><strong>Plan : </strong> {{ $schedule->meeting_purpose }}</small>
+                                        </div>
+                                        <div class="col-md-5 text-right">
+                                            <p class="text-muted"><i class="fas fa-map-marker-alt"></i>{{ ' ' . $schedule->place }}</p>
+                                            <small>{{ $schedule->date_time->format('l, d/m/y') }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mb-4">
+                                        <form action="{{ route('scheduler.response', ['id' => $schedule->id]) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" name="response" value="Accept" class="btn btn-sm btn-primary mr-1">Accept</a>
+                                                <button type="submit" name="response" value="Decline" class="btn btn-sm btn-danger">Decline</a>
+                                        </form>
+                                    </div>
+                                    <hr>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            @endcan
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white">
                     <h4><span class="highlight"><i class="fas fa-edit mr-3"></i></span> Meeting Planner</h4>
@@ -139,12 +175,27 @@
                     </form>
                 </div>
             </div>
-
-            @if ($scheduleThisMonth)
+            @if($scheduleThisMonth)
                 {{-- Schedule status approve --}}
                 <div class="card border-0 shadow-sm bg-primary mt-4">
                     <div class="card-body">
-                        <h5>Schedule Status</h5>
+                        <h5 class="mb-4"><em>Waiting For Response</em></h5>
+                        @foreach($scheduleThisMonth as $schedule)
+                            @if($schedule->author_response == 'Waiting')
+                                <div class="row mb-3">
+                                    <div class="col-md-1">
+                                        <span style="font-size: 0.7rem"><i class="fas fa-circle"></i></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ $schedule->user->name }}</p>
+                                        <small><strong>Plan : </strong> {{ $schedule->meeting_purpose }}</small>
+                                    </div>
+                                    <div class="col-md-5 text-right">
+                                        <p><i class="fas fa-map-marker-alt"></i>{{ ' ' . $schedule->place . ', ' . $schedule->date_time->format('d/m/y') }}</p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             @endif
