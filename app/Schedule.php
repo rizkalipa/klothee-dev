@@ -16,10 +16,20 @@ class Schedule extends Model
         'note'
     ];
 
+    public function getMonthAttribute()
+    {
+        return $this->date_time->month;
+    }
+
     public function dateSchedule($value)
     {
         $value = \App\Schedule::get()->first(function($date) use($value) { return ($date->date_time->day == $value) && ($date->author_response == 'Accept'); });
         return $value;
+    }
+
+    public function scopeEventSchedule($query, $value)
+    {
+        return $query->where('user_id', 1);
     }
 
     public function user()
