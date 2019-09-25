@@ -39,26 +39,27 @@ class DashboardServiceProvider extends ServiceProvider
         View::composer(['components.calendar', 'components.calendar-nodata'], function($view)
         {
             $thisMonth = Carbon::create('Asia/Jakarta');
+            $schedule = new \App\Schedule;
 
             switch( $thisMonth->startOfMonth()->format('D') )
             {
-                case('Mon'): $firstMonthSpan = 0;
+                case('Mon'): $firstDaySpan = 0;
                             break;
-                case('Tue'): $firstMonthSpan = 1;
+                case('Tue'): $firstDaySpan = 1;
                             break;
-                case('Wed'): $firstMonthSpan = 2;
+                case('Wed'): $firstDaySpan = 2;
                             break;
-                case('Thu'): $firstMonthSpan = 3;
+                case('Thu'): $firstDaySpan = 3;
                             break;
-                case('Fri'): $firstMonthSpan = 4;
+                case('Fri'): $firstDaySpan = 4;
                             break;
-                case('Sat'): $firstMonthSpan = 5;
+                case('Sat'): $firstDaySpan = 5;
                             break;
-                case('Sun'): $firstMonthSpan = 6;
+                case('Sun'): $firstDaySpan = 6;
                             break;
             }
 
-            return $view->with(['firstDaySpan' => $firstMonthSpan, 'thisMonth' => $thisMonth]);
+            return $view->with(compact('firstDaySpan', 'thisMonth', 'schedule'));
         });
     }
 }

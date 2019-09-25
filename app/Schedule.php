@@ -8,6 +8,8 @@ class Schedule extends Model
 {
     public $timestamps = false;
 
+    protected $appends = ['month', 'date', 'dateSchedule'];
+
     protected $dates = ['date_time'];
 
     protected $fillable = [
@@ -16,9 +18,9 @@ class Schedule extends Model
         'note'
     ];
 
-    public function getMonthAttribute()
+    public function getDateAttribute()
     {
-        return $this->date_time->month;
+        return $this->date_time->day;
     }
 
     public function dateSchedule($value)
@@ -27,9 +29,9 @@ class Schedule extends Model
         return $value;
     }
 
-    public function scopeEventSchedule($query, $value)
+    public function scopeEventSchedule($query)
     {
-        return $query->where('user_id', 1);
+        return $query->where('month', 9);
     }
 
     public function user()

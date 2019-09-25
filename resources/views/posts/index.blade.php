@@ -98,16 +98,17 @@
                     @foreach($postPublished as $post)
                         <div class="py-2 inline-content-between">
                             <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
-                            <span class="d-flex">
-                                <a href="{{ route('post.edit', ['id' => $post->id]) }}">
-                                    <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="fas fa-edit"></i></button>
+                            <span class="d-flex justify-content-around" style="width: 60px; font-size: 15px;">
+                                <a href="{{ route('post.edit', ['id' => $post->id]) }}" class="text-secondary" 
+                                        data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
-                                    <button class="btn btn-sm btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <i class="fas fa-trash"></i></button>
+                                    <button class="text-danger" style="border: 0; background: white;" data-toggle="tooltip" 
+                                        data-placement="top" title="Delete">
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </span>
@@ -128,16 +129,17 @@
                     @foreach($postDraft as $post)
                         <div class="py-2 inline-content-between">
                             <p><strong>{{ $post->title }}</strong> <small class="text-muted ml-2">{{ $post->created_at->format('d/m/y') }}</small></p>
-                            <span class="d-flex">
-                                <a href="{{ route('post.edit', ['id' => $post->id]) }}">
-                                    <button class="btn btn-sm btn-secondary" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="fas fa-edit"></i></button>
+                            <span class="d-flex justify-content-around" style="width: 60px; font-size: 15px;">
+                                <a href="{{ route('post.edit', ['id' => $post->id]) }}" class="text-secondary" 
+                                        data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
-                                    <button class="btn btn-sm btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <i class="fas fa-trash"></i></button>
+                                    <button class="text-danger" style="border: 0; background: white;" data-toggle="tooltip" 
+                                        data-placement="top" title="Delete">
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </span>

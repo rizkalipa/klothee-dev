@@ -15,18 +15,18 @@
     {{-- Objek thisMonth merupakan instance dari Carbon pada view composer dengan set timezone Asia/Jakarta --}}
     @for($i = 1; $i < $thisMonth->daysInMonth + 1; $i++)
         @if($thisMonth->now()->day == ($i))
-            @if($scheduleThisMonth->first()->dateSchedule($i))
-                @if($scheduleThisMonth->first()->dateSchedule($i)->date_time->day == $i)
+            @if($schedule->dateSchedule($i))
+                @if($schedule->dateSchedule($i)->date == $i)
                     <a role="button" class="calendar-date event-date-today" data-toggle="popover" title="Schedule Today:" 
-                        data-placement="top" data-content="{{ 'Place at ' . $scheduleThisMonth->first()->dateSchedule($i)->place }}">{{ $i }}</a>
+                        data-placement="top" data-content="{{ 'Place at ' . $schedule->dateSchedule($i)->place }}">{{ $i }}</a>
                     @endif
             @else
                 <a href="#" class="calendar-date selected-date">{{ $i }}</a>
             @endif
 
         {{-- Mengambil single objek dengan method pada model --}}
-        @elseif($scheduleThisMonth->first()->dateSchedule($i))
-            @if($scheduleThisMonth->first()->dateSchedule($i)->date_time->day < $thisMonth->now()->day)
+        @elseif($schedule->dateSchedule($i))
+            @if($schedule->dateSchedule($i)->date < $thisMonth->now()->day)
                 <a href="#" class="calendar-date event-past-date">{{ $i }}</a>
             @else
                 <a href="#" class="calendar-date event-date">{{ $i }}</a>

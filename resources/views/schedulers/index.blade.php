@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-body">
                     @if (filled($scheduleThisMonth->where('author_response', 'Accept')))
-                        @include('components.calendar', ['scheduleThisMonth' => $scheduleThisMonth])
+                        @include('components.calendar')
                     @else
                         @include('components.calendar-nodata')
                     @endif

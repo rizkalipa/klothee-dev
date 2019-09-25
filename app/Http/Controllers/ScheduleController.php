@@ -13,11 +13,6 @@ class ScheduleController extends Controller
 
     public function index()
     {
-        $schedule = new \App\Schedule;
-        
-        dd($schedule->dateSchedule(9));
-
-
         $schedules = \App\Schedule::get()->sortBy('date_time');
 
         if($schedules->filter(function($schedule) { return  $schedule->date_time->month < now()->month; }))
